@@ -23,5 +23,6 @@
 
 <a href="{% url 'home' %}"><button class="btn btn-secondary">Back</button></a>
 <a href="{% url 'delete_record' customer_record.id %}"><button class="btn btn-danger">Delete</button></a>
+<a href="{% url 'update_record' customer_record.id %}"><button class="btn btn-secondary">Update Record</button></a>
 {% endif %}
 {% endblock %}

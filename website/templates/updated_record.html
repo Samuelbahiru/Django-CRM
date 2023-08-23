@@ -1,8 +1,7 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Register</h1>
-<br />
-<div class="container">
-  <form method="POST" action="">
+<h1>Add Record </h1>
+<br>
+<form method="POST">
     {% csrf_token %} {% if form.errors %}
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
       Your from has errors {% for field in form %} {% if field.errors %} {{
@@ -18,8 +17,9 @@
     {% endif %} 
     {{form.as_p}}
     
-    <button type="submit" class="btn btn-secondary">Register</button>
+    <button type="submit" class="btn btn-secondary">Update Record</button>
   </form>
-</div>
+
+
 
 {% endblock %}
