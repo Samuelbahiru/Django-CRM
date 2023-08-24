@@ -72,7 +72,8 @@ def delete_record(request, pk):
     else:
         messages.success(request, "You have to Login to delete the users")
         return redirect('home')
-    
+
+
 def add_record(request):
     form = AddRecordForm(request.POST or None)
     if request.user.is_authenticated:
@@ -80,24 +81,26 @@ def add_record(request):
         if request.method == "POST":
             if form.is_valid():
                 form.save()
-                messages.success(request, "you have successfully added the record")
-                return redirect('home')     
+                messages.success(
+                    request, "you have successfully added the record")
+                return redirect('home')
         return render(request, 'add_record.html', {'form': form})
-    
-    else: 
+
+    else:
         messages.success(request, "you have to login to add new record")
-        return redirect("home") 
-    
+        return redirect("home")
+
+
 def update_record(request, pk):
     if request.user.is_authenticated:
-        current_record = Record.objects.all(id=pk)
+        current_record = Record.objects.get(id=pk)
         form = AddRecordForm(request.POST or None, instance=current_record)
-        if request.method =="POST": 
+        if request.method == "POST":
             if form.is_valid():
                 form.save()
                 messages.success(request, "you have successfully updated")
                 return redirect('home')
         return render(request, 'updated_record.html', {'form': form})
-    else: 
+    else:
         messages.success(request, "you have to login to update the record")
         return redirect('home')
